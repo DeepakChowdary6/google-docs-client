@@ -23,7 +23,7 @@ const TOOLBAR_OPTIONS = [
 const SOCKET_URL = process.env.BACKEND_URL || `http://localhost:3001`;
 export default function TextEditor() {
     const {id:documentId}=useParams();
-    const socket = useRef(io('https://google-docs-backend-ww68.onrender.com/'))
+    const socket = useRef(io('https://google-docs-backend-ww68.onrender.com/',{transports: ['websocket'],}))
     const [quill, setQuill] = useState()
     const wrapperRef = useCallback(wrapper => {
         if (wrapper == null) return
