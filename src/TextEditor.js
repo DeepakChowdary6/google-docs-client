@@ -20,7 +20,7 @@ const TOOLBAR_OPTIONS = [
 
 export default function TextEditor() {
     const {id:documentId}=useParams();
-    const socket = useRef(io("http://localhost:3001"))
+    const socket = useRef(io(process.env.BACKEND_URL))
     const [quill, setQuill] = useState()
     const wrapperRef = useCallback(wrapper => {
         if (wrapper == null) return
