@@ -5,6 +5,8 @@ import { io } from "socket.io-client"
 import {useParams} from "react-router-dom";
 //require('dotenv').config();
 
+import Header from "./Header";
+
 const SAVE_INTERVAL_MS=2000;
 
 const TOOLBAR_OPTIONS = [
@@ -12,15 +14,19 @@ const TOOLBAR_OPTIONS = [
     [{ font: [] }],
     [{ list: "ordered" }, { list: "bullet" }],
     ["bold", "italic", "underline"],
+    [{customElements:""}],
     [{ color: [] }, { background: [] }],
     [{ script: "sub" }, { script: "super" }],
     [{ align: [] }],
     ["image", "blockquote", "code-block"],
     ["clean"],
+
+    ['omega'],
+
 ]
 
 
-const SOCKET_URL = process.env.BACKEND_URL || `http://localhost:3001`;
+
 export default function TextEditor() {
     const {id:documentId}=useParams();
     const socket = useRef(io('https://google-docs-backend-ww68.onrender.com/',{transports: ['websocket'],}))
@@ -94,5 +100,15 @@ export default function TextEditor() {
 
     },[quill,documentId,socket.current])
 
-    return <div className="container" ref={wrapperRef}></div>
+
+
+    return <>
+        <div >
+          <Header  quill={quill}/>
+
+        <div className="container" ref={wrapperRef}>
+        </div>
+        </div>
+
+    </>;
 }

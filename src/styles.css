@@ -26,11 +26,11 @@ body{
 .container .ql-toolbar.ql-snow{
     display: flex;
     justify-content: center;
-    z-index: 2;
+    z-index: 3;
     position: sticky;
     top:0;
     background-color: #F3F3F3;
-    box-shadow:  0 0 5px 0 rgba(0,0,0, .5);
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.5);
 }
 @page  {
     margin: 1in;
